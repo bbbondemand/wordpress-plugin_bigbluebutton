@@ -388,11 +388,12 @@ class Bigbluebutton_Api {
 				$result = wp_remote_post($url, array(
 						'method' => 'POST',
 						'headers' => $headers,
-						'body' => $payload
+						'body' => $payload,
+                        'timeout' => 120
 				));
 			}
 		}else{
-			$result = wp_remote_get( esc_url_raw( $url ) );
+            $result = wp_remote_get( esc_url_raw( $url ) , array( 'timeout' => 120 ));
 		}
 		return $result;
 	}
